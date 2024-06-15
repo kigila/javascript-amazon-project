@@ -656,5 +656,37 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: "SHA1-ID1",
+    image: "images/products/backpack.jpg",
+    name: "Back for everyday",
+    rating: {
+      stars: 4,
+      count: 200
+    },
+    priceCents: 1699,
+    keywords: [
+      "backpack",
+      "schoolbag",
+      "apparel",
+      "mens"
+    ]
+  },
+  {
+    id: "SHA1-ID2",
+    image: "images/products/umbrella.jpg",
+    name: "Umbralla Finess",
+    rating: {
+      stars: 4.5,
+      count: 350
+    },
+    priceCents: 4959,
+    keywords: [
+      "umbrella",
+      "women",
+      "apparel",
+      "mens"
+    ]
   }
 ];
