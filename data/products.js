@@ -13,8 +13,6 @@ export function getProduct(productId){
   return matchingProduct;
 }
 
-
-
 class Product{
   id;
   image;
@@ -36,6 +34,24 @@ class Product{
 
   getPrice(){
     return `$${formatCurrency(this.priceCents)}`
+  }
+
+  extraInfoHTML(){
+    return '<p></p>';
+  }
+}
+
+class Clothing extends Product{
+  sizeChartLink;
+  constructor(producDetails){
+    super(producDetails);
+    this.sizeChartLink=producDetails.sizeChartLink;
+  }
+
+  extraInfoHTML(){
+    return `
+    <a href="${this.sizeChartLink} target="_blank">Size chart</a>
+    `;
   }
 }
 
@@ -732,5 +748,8 @@ export const products = [
     ]
   }
 ].map((producDetails)=>{
+  if(producDetails.type==='clothing'){
+    return new Clothing(producDetails);
+  }
   return new Product(producDetails);
 })
