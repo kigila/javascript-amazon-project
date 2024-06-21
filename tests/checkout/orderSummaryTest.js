@@ -1,7 +1,7 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { loadFromStorage, cart } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
-import { formatCurrency } from '../utils/money.js';
+import { formatCurrency } from '../../scripts/utils/money.js';
 
 
 
@@ -12,8 +12,9 @@ describe('test suite: renderOrderSummary', ()=>{
 
   const productName1=getProduct(productId1).name
   const productName2=getProduct(productId2).name
-  const productPrice1=formatCurrency(getProduct(productId1).price)
-  const productPrice2=formatCurrency(getProduct(productId2).price)
+  const productPrice1=formatCurrency(getProduct(productId1).priceCents)
+  const productPrice2=formatCurrency(getProduct(productId2).priceCents)
+  console.log(getProduct(productId2))
 
   beforeEach(()=>{
     spyOn(localStorage, 'setItem');

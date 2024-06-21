@@ -13,7 +13,7 @@ export function getProduct(productId){
   return matchingProduct;
 }
 
-class Product{
+export class Product{
   id;
   image;
   name;
@@ -28,7 +28,7 @@ class Product{
     this.priceCents=producDetails.priceCents;
   }
 
-  getStarsUlr(){
+  getStarsUrl(){
     return `images/ratings/rating-${this.rating.stars*10}.png`;
   }
 
@@ -37,11 +37,11 @@ class Product{
   }
 
   extraInfoHTML(){
-    return '<p></p>';
+    return '';
   }
 }
 
-class Clothing extends Product{
+export class Clothing extends Product{
   sizeChartLink;
   constructor(producDetails){
     super(producDetails);
@@ -50,7 +50,24 @@ class Clothing extends Product{
 
   extraInfoHTML(){
     return `
-    <a href="${this.sizeChartLink} target="_blank">Size chart</a>
+    <a href="${this.sizeChartLink}" target="_blank">Size chart</a>
+    `;
+  }
+}
+
+export class Appliance extends Product{
+  instructionsLink;
+  warrantyLink;
+  constructor(producDetails){
+    super(producDetails)
+    this.instructionsLink=producDetails.instructionsLink;
+    this.warrantyLink=producDetails.warrantyLink;
+  }
+
+  extraInfoHTML(){
+    return `
+    <a href="${this.instructionsLink}" target="_blank">Instructions</a>
+    <a href="${this.warrantyLink}" target="_blank">Warranty</a>
     `;
   }
 }
@@ -142,6 +159,9 @@ export const products = [
     id: "54e0eccd-8f36-462b-b68a-8182611d9add",
     image: "images/products/black-2-slot-toaster.jpg",
     name: "2 Slot Toaster - Black",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png",
+    type: 'appliance',
     rating: {
       stars: 5,
       count: 2197
@@ -327,6 +347,9 @@ export const products = [
     id: "c2a82c5e-aff4-435f-9975-517cfaba2ece",
     image: "images/products/electric-glass-and-steel-hot-water-kettle.webp",
     name: "Electric Glass and Steel Hot Tea Water Kettle - 1.7-Liter",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png",
+    type: 'appliance',
     rating: {
       stars: 5,
       count: 846
@@ -556,6 +579,9 @@ export const products = [
     id: "4e37dd03-3b23-4bc6-9ff8-44e112a92c64",
     image: "images/products/non-stick-cooking-set-15-pieces.webp",
     name: "Non-Stick Cookware Set, Pots, Pans and Utensils - 15 Pieces",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png",
+    type: 'appliance',
     rating: {
       stars: 4.5,
       count: 511
@@ -632,6 +658,9 @@ export const products = [
     id: "0d7f9afa-2efe-4fd9-b0fd-ba5663e0a524",
     image: "images/products/coffeemaker-with-glass-carafe-black.jpg",
     name: "Coffeemaker with Glass Carafe and Reusable Filter - 25 Oz, Black",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png",
+    type: 'appliance',
     rating: {
       stars: 4.5,
       count: 1211
@@ -692,6 +721,9 @@ export const products = [
     id: "77a845b1-16ed-4eac-bdf9-5b591882113d",
     image: "images/products/countertop-blender-64-oz.jpg",
     name: "Countertop Blender - 64oz, 1400 Watts",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png",
+    type: 'appliance',
     rating: {
       stars: 4,
       count: 3
@@ -785,6 +817,9 @@ export const products = [
 ].map((producDetails)=>{
   if(producDetails.type==='clothing'){
     return new Clothing(producDetails);
+  }
+  if(producDetails.type==='appliance'){
+    return new Appliance(producDetails);
   }
   return new Product(producDetails);
 })
