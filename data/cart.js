@@ -119,4 +119,4 @@ export function loadCart(fun){
   xhr.send();
 }
 
-loadCart()
+// loadCart()

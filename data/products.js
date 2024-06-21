@@ -110,6 +110,33 @@ obj3.method()
 
 export let products=[];
 
+
+export function loadProductsFetch(){
+  const promise = fetch(
+    'https://supersimplebackend.dev/products'
+  ).then((response)=>{
+    return response.json();
+  }).then((productsData)=>{
+    products=productsData.map((producDetails)=>{
+      if(producDetails.type==='clothing'){
+        return new Clothing(producDetails);
+      }
+      if(producDetails.type==='appliance'){
+        return new Appliance(producDetails);
+      }
+      return new Product(producDetails);
+    });
+
+    console.log('loaded products');
+  })
+
+  return promise;
+}
+
+// loadProductsFetch().then(()=>{
+//   console.log('next step')
+// })
+
 export function loadProducts(fun){
   const xhr=new XMLHttpRequest();
 
@@ -132,7 +159,7 @@ export function loadProducts(fun){
   xhr.send();
 }
 
-loadProducts()
+// loadProducts()
 
 
 /*

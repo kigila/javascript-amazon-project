@@ -1,7 +1,7 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { loadFromStorage, cart } from "../../data/cart.js";
 import { formatCurrency } from '../../scripts/utils/money.js';
-import { loadProducts, products, getProduct  } from "../../data/products.js";
+import { loadProducts, products, getProduct, loadProductsFetch } from "../../data/products.js";
 
 
 
@@ -16,7 +16,7 @@ describe('test suite: renderOrderSummary', () => {
   const productPrice2=formatCurrency(2095)
 
   beforeAll((done)=>{
-    loadProducts(()=>{
+    loadProductsFetch().then(()=>{
       done();
     });
   });
