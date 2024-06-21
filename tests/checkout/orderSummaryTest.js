@@ -1,20 +1,25 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { loadFromStorage, cart } from "../../data/cart.js";
-import { getProduct } from "../../data/products.js";
 import { formatCurrency } from '../../scripts/utils/money.js';
+import { loadProducts, products, getProduct  } from "../../data/products.js";
 
 
 
 
-describe('test suite: renderOrderSummary', ()=>{
+describe('test suite: renderOrderSummary', () => {
   const productId1='e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
   const productId2='15b6fc6f-327a-4ec4-896f-486349e85a3d';
 
-  const productName1=getProduct(productId1).name
-  const productName2=getProduct(productId2).name
-  const productPrice1=formatCurrency(getProduct(productId1).priceCents)
-  const productPrice2=formatCurrency(getProduct(productId2).priceCents)
-  console.log(getProduct(productId2))
+  const productName1='Black and Gray Athletic Cotton Socks - 6 Pairs'
+  const productName2='Intermediate Size Basketball'
+  const productPrice1=formatCurrency(1090)
+  const productPrice2=formatCurrency(2095)
+
+  beforeAll((done)=>{
+    loadProducts(()=>{
+      done();
+    });
+  });
 
   beforeEach(()=>{
     spyOn(localStorage, 'setItem');

@@ -124,7 +124,7 @@ export function loadProducts(fun){
       return new Product(producDetails);
     })
 
-    console.log('loaded products')
+    console.log('loaded products');
     fun();
   })
 
