@@ -62,22 +62,21 @@ class RaceCar extends Car{
 const car1=new Car({brand: 'Toyota',model: 'Corolla'});
 const car2=new Car({brand: 'Tesla',model: 'Model 3'});
 const car3=new RaceCar({brand: 'McLaren',model: 'F1', acceleration: 20});
-console.log(car1)
-console.log(car2)
-console.log(car3)
-car1.displayInfo()
-car2.displayInfo()
-car2.isTrunkOpen=true;
-car3.openTrunk();
-console.log(car2)
+// console.log(car1)
+// console.log(car2)
+// console.log(car3)
+// car1.displayInfo()
+// car2.displayInfo()
+// car2.isTrunkOpen=true;
+// car3.openTrunk();
 
 
 
-for (let i=0;i<=10;i++){
-  if(Math.random()>0.5){
-    car3.go();
-  } else{
-    car3.brake()
-  }
-  car3.displayInfo()
-}
+// for (let i=0;i<=10;i++){
+//   if(Math.random()>0.5){
+//     car3.go();
+//   } else{
+//     car3.brake()
+//   }
+//   car3.displayInfo()
+// }
